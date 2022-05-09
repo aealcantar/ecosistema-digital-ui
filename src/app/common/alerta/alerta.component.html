@@ -1,0 +1,23 @@
+ <!--<div *ngIf="objAlerta" style="position: absolute; width: 100%">
+  <ngb-alert
+    [type]="objAlerta.type"
+    [dismissible]="true"
+    *ngIf="objAlerta.visible || undefined"
+    (closed)="!objAlerta.visible"
+    style="margin: 0 auto; width: 600px"
+  >
+    <div [innerHTML]="objAlerta.message"></div>
+  </ngb-alert>
+</div>-->
+<div *ngIf="objAlerta!=null && objAlerta.type=='error'" style="position: absolute; width: 100%">
+<div *ngIf="objAlerta.visible || undefined" class="alert alert-danger alert-dismissible" style="margin: 0 auto; width: 50%;">
+  <button type="button" class="close x-ciera" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" class="error">x</span></button>
+  <div [innerHTML]="objAlerta.message"></div>
+</div>
+</div>
+<div *ngIf="objAlerta!=null && objAlerta.type=='success'" style="position: absolute; width: 100%">
+  <div *ngIf="objAlerta.visible || undefined" class="alert alert-success alert-dismissible" style="margin: 0 auto; width: 50%;">
+    <button type="button" class="close x-ciera" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" class="success">x</span></button>
+    <div [innerHTML]="objAlerta.message"></div>
+  </div>
+  </div>

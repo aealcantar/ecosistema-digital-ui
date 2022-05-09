@@ -1,0 +1,146 @@
+<!-- componente alertas -->
+<app-alerta [objAlerta]="alert"></app-alerta>
+<!-- / -->
+
+<div class="container-fluid central">
+  <div class="row g-0">
+    <div class="col-12 col-md-12 pleca-head">
+      <div class="Historial-clnico">Agenda Digital Transversal</div>
+      <div class="Group-1028">
+        <div class="auth-user">Roberto García</div>
+        <div class="auth-rol">Trabajador(a) social - Nivel 2</div>
+      </div>
+      <div><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span
+            class="caret mnu"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right list-menu" role="menu" aria-labelledby="dLabel">
+          <li><a>Catálogos</a></li>
+          <li><a>Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="base-cont">
+      <div class="tit-princ ">
+        <div class="text-left pull-left">
+          <span (click)="regresar()"><img src="../../../../assets/images/btn-arrow-lf.png" /></span>
+          <span>Configuración de usuarios</span>
+        </div>
+      </div>
+      <div class="body-princ">
+        <div class="texto-ind">
+          Buscar por matrícula o nombre completo
+        </div>
+
+        <form class="form-inline" role="form" autocomplete="off">
+          <div class="form-group">
+            <!-- <label class="" for="txtconsulta">Buscar por matrícula o nombre completo</label> -->
+            <input class="form-control matricula" id="txtconsulta" placeholder="Ingresar matrícula o nombre" type="text"
+              name="txtconsulta" [(ngModel)]="txtbusca" #ctrl="ngModel">
+          </div>
+
+
+          <button class="btn btn-default btuser" style="margin-left: 30px;" (click)="limpiarbusqueda()">Limpiar</button>
+          <button class="btn btn-primary btuser" style="margin-left: 30px;" (click)="buscarusuario()">Buscar</button>
+
+          <button class="btn btn-primary btuser pull-right" style="padding-left: 10px;" (click)="nuevousuario()">Nuevo
+            usuario</button>
+        </form>
+
+        <table id="tblusuarios" datatable [dtOptions]="dtOptions"
+          class="table table-hover table-bordered table-catalogo caption-top" *ngIf="lstUsuarios.length > 0">
+          <caption class="borde-cap ps-2">
+            <div class="col-2 col-md-2 float-start pull-left" style="line-height: 40px;">
+              Resultados <span class="totcargas">{{lstUsuarios.length}}</span>
+            </div>
+            <div class="col-2 col-md-4 float-end pull-right" style="line-height: 40px;text-align: right;">
+              Visualizar datos
+              <button type="button" class="btn btn-default btn-select dropdown-toggle pull-right"
+                style="margin-left: 20px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret-img">{{numitems}}</span> <img src="../../../../assets/images/Icon.png">
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let i of [15,20,50,100]"><a (click)="cambiatotalpaginas(i)">{{i}}</a></li>
+              </ul>
+            </div>
+
+
+            <!-- <select class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select> -->
+
+          </caption>
+          <thead>
+            <tr>
+              <th>Matrícula</th>
+              <th>Nombre completo</th>
+              <th>Rol en el sistema</th>
+              <th>Rol en el instituto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of lstUsuarios">
+              <td class="link-texto" (click)="muestrausuario(item.cve_personal)">
+                {{ item.matricula }}</td>
+              <td>{{item.nombreCompleto }}</td>
+              <td>{{ item.adtc_roles.des_rol }}</td>
+              <td>{{ item.des_puesto }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <div class="table-pie-old" *ngIf="lstUsuarios.length > 0" >
+          <div class="cargalayout">
+            <span></span>
+          </div>
+          <div class="paginador"> -->
+        <!-- <nav aria-label="Page navigation" *ngIf="lstUsuarios.length > numitems">
+              <ul class="pagination pag">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav> -->
+        <!-- </div>
+          <div class="nopag" *ngIf="lstUsuarios.length > numitems">
+            Página
+            <span class="bg-nopag" [innerText]="pagactual"></span>
+          </div>
+        </div> -->
+
+        <div class="nopag pull-right" *ngIf="lstUsuarios.length > 0">
+          Página
+          <span class="bg-nopag" [innerText]="pagactual"></span>
+        </div>
+
+        <div class="sin-resultados" *ngIf="lstUsuarios.length == 0">
+          <img src="../../../../assets/images/Group 2358.png" srcset="../../../../assets/images/Group 2358@2x.png 2x,
+     ../../../../assets/images/Group 2358@3x.png 3x" class="Group-2358">
+        </div>
+        <div class="table-pie sin-borde" *ngIf="lstUsuarios.length == 0">
+          <div class="cargalayout">
+            <span (click)="cargalayoutusuarios()">Carga de personal: <img
+                src="../../../../assets/images/icon-upload.png"> </span>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </section>
+</div>

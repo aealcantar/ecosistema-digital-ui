@@ -1,0 +1,42 @@
+<!-- componente alertas -->
+<app-alerta [objAlerta]="alert"></app-alerta>
+<!-- / -->
+
+<div class="container-fluid central">
+  <div class="row g-0">
+    <div class="col-12 col-md-12 pleca-head">
+      <div class="Historial-clnico">Agenda Digital Transversal</div>
+      <div class="Group-1028">
+          <div class="auth-user">Roberto García</div>
+          <div class="auth-rol">Trabajador(a) social - Nivel 2</div>
+      </div>
+      <div><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret mnu"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right list-menu" role="menu" aria-labelledby="dLabel">
+          <li><a>Catálogos</a></li>
+          <li><a>Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="base-cont">
+      <div class="tit-princ">
+        <div class=" text-left pull-left">
+          <span (click)="regresaconsulta()"><img src="../../../../assets/images/btn-arrow-lf.png"></span>
+          <span>Consultar usuario</span>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-primary btuser pull-right" (click)="editarusuario()" >Editar</button>
+        </div>
+      </div>
+      <div class="body-princ">
+
+        <div class="usrlist pull-left" *ngFor="let item of items | keyvalue: keepOriginalOrder">
+          <div class="titulo">{{item.key}}:</div>
+          <div class="valor">{{item.value}}</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

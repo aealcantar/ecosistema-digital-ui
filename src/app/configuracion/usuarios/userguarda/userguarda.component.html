@@ -1,0 +1,176 @@
+<!-- componente alertas -->
+<app-alerta [objAlerta]="alert"></app-alerta>
+<!-- / -->
+
+<div class="container-fluid central">
+  <div class="row g-0">
+    <div class="col-12 col-md-12 pleca-head">
+      <div class="Historial-clnico">Agenda Digital Transversal</div>
+      <div class="Group-1028">
+        <div class="auth-user">Roberto García</div>
+        <div class="auth-rol">Trabajador(a) social - Nivel 2</div>
+      </div>
+      <div><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span
+            class="caret mnu"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right list-menu" role="menu" aria-labelledby="dLabel">
+          <li><a>Catálogos</a></li>
+          <li><a>Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="base-cont">
+      <div class="tit-princ">
+        <div class="text-left pull-left">
+          <span (click)="regresar()"><img src="../../../../assets/images/btn-arrow-lf.png" /></span>
+          {{isedit ? "Editar " : "Nuevo "}}usuario
+        </div>
+      </div>
+      <form novalidate [formGroup]="userdata" class="form-inline" role="form" autocomplete="off">
+        <div class="body-princ">
+          <div class="texto-ind">Por favor capture los siguientes datos:</div>
+          <br />
+          <div class="form-group usrlist pull-left">
+            <label for="matricula" class="titulo">Matrícula
+              <span class="form-text"
+                [ngClass]="{'form-text-error': userdata.controls['matricula'].dirty && userdata.controls['matricula'].errors}">*
+              </span>:
+            </label>
+            <input type="text" class="form-control captura" id="matricula" formControlName="matricula"
+              [ngClass]="{ 'form-control-error': userdata.controls['matricula'].dirty && userdata.controls['matricula'].errors}"
+              placeholder="Ingresar matrícula" minlength="7" maxlength="9" (keyup)="onKeyUpEvent($event)" required />
+            <small *ngIf="userdata.controls['matricula'].dirty && f['matricula'].errors"
+              class="form-text form-text-error">
+              {{f['matricula'].errors?.['required'] == true ? "Campo obligatorio" : ""}}
+              {{f['matricula'].errors?.['minlength']? "Matrícula inválida" : ""}}
+              {{f['matricula'].errors?.['maxlength']? "Matrícula inválida" : ""}}
+            </small>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="usuario" class="titulo">Usuario:</label>
+            <input type="text" class="form-control captura" id="usuario" placeholder="" formControlName="usuario"
+              readonly />
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="password" class="titulo">Contraseña:</label>
+            <input type="password" class="form-control captura" id="password" placeholder="" formControlName="password"
+              readonly />
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="nombres" class="titulo">Nombre(s)
+              <span class="form-text"
+                [ngClass]="{'form-text-error': userdata.controls['nombres'].dirty && userdata.controls['nombres'].errors}">*
+              </span>:
+            </label>
+            <input type="text" class="form-control captura" id="nombres" placeholder="Ingresar nombre(s)"
+              formControlName="nombres"
+              [ngClass]="{'form-control-error': userdata.controls['nombres'].dirty && userdata.controls['nombres'].errors}"
+              maxlength="35" pattern="^([a-zA-Z \-\']|[à-ú]|[À-Ú])+$" required />
+            <small *ngIf="userdata.controls['nombres'].dirty && f['nombres'].errors" class="form-text form-text-error">
+              {{userdata.controls['nombres'].errors?.['required']? "Campo obligatorio" : "Formato inválido"}}
+            </small>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="primerapellido" class="titulo">Primer apellido
+              <span class="form-text"
+                [ngClass]="{'form-text-error': userdata.controls['primerapellido'].dirty && userdata.controls['primerapellido'].errors}">*
+              </span>:
+            </label>
+            <input type="text" class="form-control captura" id="primerapellido" placeholder="Ingresar apellido"
+              formControlName="primerapellido"
+              [ngClass]="{ 'form-control-error': userdata.controls['primerapellido'].dirty && userdata.controls['primerapellido'].errors}"
+              maxlength="35" pattern="^([a-zA-Z \-\']|[à-ú]|[À-Ú])+$" required />
+            <small *ngIf="userdata.controls['primerapellido'].dirty && f['primerapellido'].errors"
+              class="form-text form-text-error">
+              {{userdata.controls['primerapellido'].errors?.['required']? "Campo obligatorio" : "Formato inválido"}}
+            </small>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="segundoapellido" class="titulo">Segundo apellido
+              <span class="form-text"
+                [ngClass]="{'form-text-error': userdata.controls['segundoapellido'].dirty && userdata.controls['segundoapellido'].errors}">*
+              </span>:
+            </label>
+            <input type="text" class="form-control captura" id="segundoapellido" placeholder="Ingresar apellido"
+              formControlName="segundoapellido"
+              [ngClass]="{ 'form-control-error': userdata.controls['segundoapellido'].dirty && userdata.controls['segundoapellido'].errors}"
+              maxlength="35" pattern="^([a-zA-Z \-\']|[à-ú]|[À-Ú])+$" required />
+            <small *ngIf="userdata.controls['segundoapellido'].dirty && f['segundoapellido'].errors"
+              class="form-text form-text-error">
+              {{userdata.controls['segundoapellido'].errors?.['required']? "Campo obligatorio" : "Formato inválido"}}
+            </small>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="correo" class="titulo">Correo electrónico
+              <span class="form-text"
+                [ngClass]="{'form-text-error': userdata.controls['correo'].dirty && userdata.controls['correo'].errors}">*
+              </span>:
+            </label>
+            <input type="email" class="form-control captura" id="correo" placeholder="Ingresar correo"
+              formControlName="correo"
+              [ngClass]="{ 'form-control-error': userdata.controls['correo'].dirty && userdata.controls['correo'].errors }"
+              pattern="[a-zA-Z0-9!#$%&'+-]([\.]?[a-zA-Z0-9_!#$%&'+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+              maxlength="45" required />
+            <small *ngIf="userdata.controls['correo'].dirty && f['correo'].errors" class="form-text form-text-error">
+              {{f['correo'].errors?.['required'] == true ? "Campo obligatorio" : ""}}
+              {{f['correo'].errors?.['pattern']? "Formato inválido" : ""}}
+            </small>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="unidadmedica" class="titulo">Unidad médica:</label>
+            <input type="text" class="form-control captura" id="unidadmedica" placeholder=""
+              formControlName="unidadmedica" maxlength="45" readonly />
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="rol" class="titulo">Rol
+              <span class="form-text"
+                [ngClass]="{'form-text-error': userdata.controls['rol'].dirty && userdata.controls['rol'].errors}">*
+              </span>:
+            </label>
+            <select class="form-control captura" id="rol" placeholder="Seleccionar rol" #cricket
+              (change)="update($event)" formControlName="rol"
+              [ngClass]="{ 'form-control-error': userdata.controls['rol'].dirty && userdata.controls['rol'].errors}"
+              required>
+              <!-- <option value="default">----</option> -->
+              <option [value]="objeto.cve_rol" *ngFor="let objeto of lstRoles">{{objeto.des_rol}}</option>
+            </select>
+            <small *ngIf="userdata.controls['rol'].dirty && f['rol'].errors" class="form-text form-text-error">
+              Campo obligatorio
+            </small>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="" class="titulo">Estatus:</label>
+
+            <label class="radio-inline rdb-captura">
+              Activo: <input type="radio" name="estatus" formControlName="estatus" id="activo" value="true">
+            </label>
+            <label class="radio-inline rdb-captura">
+              Inactivo: <input type="radio" name="estatus" formControlName="estatus" id="inactivo" value="false">
+            </label>
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="puesto" class="titulo">Puesto:</label>
+            <input type="text" class="form-control captura" id="puesto" placeholder="Ingresar puesto"
+              formControlName="puesto" maxlength="45" />
+          </div>
+          <div class="form-group usrlist pull-left">
+            <label for="escuelaprocd" class="titulo">Escuela de procedencia:</label>
+            <input type="text" class="form-control captura" id="escuelaprocd"
+              placeholder="Ingresar escuela de procedencia" formControlName="escuelaprocd" maxlength="45" />
+          </div>
+        </div>
+        <div class="foot-princ">
+          <span class="text-pie">*Campos obligatorios</span>
+          <button type="submit" class="btn btn-primary btuser pull-right" (click)="guardausuario()"
+            [disabled]="userdata.valid == false">
+            Guardar
+          </button>
+          <button class="btn btn-danger btuser pull-right" type="button" (click)="cancelar()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

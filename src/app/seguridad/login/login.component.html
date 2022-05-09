@@ -1,0 +1,229 @@
+<!-- <ng-template #content let-modal>
+  <div class="modal-header text-center" fxLayoutAlign="center center">
+    <h4 class="modal-title">Atención</h4> -->
+    <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
+  <!-- </div>
+  <div class="modal-body">
+    <form novalidate [formGroup]="correodata">
+      <div class="form-group">
+        <p class="text-center">
+          <label for="correornv">Ingrese su correo*:</label>
+        </p>
+        <input
+          type="email"
+          formControlName="correornv"
+          id="correornv"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': correosubmitted && correodata.controls['correornv'].errors?.['required'] }"
+          placeholder="Ingresar correo electrónico"
+          required
+        />
+        <div
+          *ngIf="correosubmitted && correodata.controls['correornv'].errors?.['required']"
+          class="invalid-feedback"
+        >
+          <div
+            *ngIf="correosubmitted && correodata.controls['correornv'].errors?.['required']"
+          >
+            Correo inválido
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer" fxLayoutAlign="center center">
+    <button
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="cancelarenviocorreo()"
+    >
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      class="btn btn-outline-danger"
+      (click)="validacorreo()"
+    >
+      Enviar
+    </button>
+  </div>
+</ng-template> -->
+
+<div class="modal fade" role="dialog" id="content" #content>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center" fxLayoutAlign="space-between center" fxLayout="column">
+        <img src="../../../../assets/images/Group 2082.png"
+          class="Group-2082">
+        <div class="modal-title Atencin">Atención</div>
+      </div>
+      <div class="modal-body">
+        <form novalidate [formGroup]="correodata" autocomplete="off">
+          <div class="form-group">
+            <label class="inp-lbl" for="correornv">Ingrese su correo
+              <span class="form-text"
+                [ngClass]="{'form-text-error': correodata.controls['correornv'].dirty && correodata.controls['correornv'].errors}">*
+              </span>:
+            </label>
+            <input
+              type="email"
+              formControlName="correornv"
+              id="correornv"
+              class="form-control captura"
+              maxlength="50"
+              [ngClass]="{'form-control-error': correodata.controls['correornv'].dirty && correodata.controls['correornv'].errors}"
+              pattern="[a-zA-Z0-9!#$%&'+-]([\.]?[a-zA-Z0-9_!#$%&'+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+              placeholder="Ingresar correo electrónico"
+              maxlength="45"
+              required
+            />
+            <small
+              *ngIf="correodata.controls['correornv'].dirty && correodata.controls['correornv'].errors"
+              class="form-text form-text-error Campo-obligatorio">
+                {{correodata.controls['correornv'].errors?.['required'] == true ? "Campo obligatorio" : ""}}
+                {{correodata.controls['correornv'].errors?.['pattern']? "Formato inválido" : ""}}
+            </small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" fxLayoutAlign="center">
+        <button
+      class="btn btn-danger btuser"
+      type="button"
+      (click)="cancelarenviocorreo()"
+      style="margin-right: 25px;"
+    >
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary btuser"
+      (click)="validacorreo()"
+      [disabled]="correodata.valid == false"
+    >
+      Enviar
+    </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<app-alerta [objAlerta]="alert"></app-alerta>
+
+<div class="container-fluid logn">
+<div class="bg" style="width: 100%;">
+    <p class="t-social">Trabajo Social</p>
+</div>
+<section class="">
+<div class="cuadro-imagen">
+  <div class="img-bg">
+    <div class="group-815">
+      <div class="frame-3888">
+        <p class="mdulo-de">Módulo de</p>
+        <p class="trabajo-social">Trabajo social</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cuadro-blanco" style="display: inline;">
+  <section fxLayoutAlign="center" >
+
+    <form
+      novalidate
+      fxLayout="column"
+      fxLayoutAlign="center"
+      autocomplete="off"
+      [formGroup]="logindata"
+      style="width: 100%; padding-right: 43px; padding-left: 43px;">
+      <div class="title">
+        Inicio de sesión
+      </div>
+      <div class="description">
+          Captura tu usuario y contraseña para ingresar
+      </div>
+      <div class="form-group">
+        <label for="usuario" class="usuario-login">Usuario
+          <span class="form-text"
+            [ngClass]="{'form-text-error': logindata.controls['usuario'].dirty && logindata.controls['usuario'].errors}">*
+          </span>:
+        </label>
+        <input
+          type="text"
+          formControlName="usuario"
+          id="usuario"
+          class="form-control"
+          [ngClass]="{'form-control-error': logindata.controls['usuario'].dirty && logindata.controls['usuario'].errors}"
+          placeholder="Ingresar usuario"
+          maxlength="10"
+          required
+        />
+        <small
+          *ngIf="logindata.controls['usuario'].dirty && logindata.controls['usuario'].errors"
+          class="form-text form-text-error Campo-obligatorio">
+            Campo obligatorio
+        </small>
+      </div>
+<!--
+      <mat-form-field>
+        <input matInput placeholder="Password" [type]="showPassword ? 'password' : 'text'" formControlName="password" required>
+        <mat-icon svgIcon="eye-off" id="togglePassword" *ngIf="!showPassword" (click)="showPassword = !showPassword"></mat-icon>
+        <mat-icon svgIcon="eye-on" id="togglePassword"  *ngIf="showPassword" (click)="showPassword = !showPassword"></mat-icon>
+
+        <mat-hint *ngIf="passwordInput!=null && !passwordInput.value">Enter your password</mat-hint>
+    </mat-form-field>-->
+
+      <div class="form-group has-feedback">
+        <label for="password" class="control-label usuario-login">Contraseña
+          <span class="form-text"
+            [ngClass]="{'form-text-error': logindata.controls['password'].dirty && logindata.controls['password'].errors}">*
+          </span>:
+        </label>
+        <input
+          [type]="showPassword?'text':'password'"
+          formControlName="password"
+          id="password"
+          class="form-control"
+          [ngClass]="{'form-control-error': logindata.controls['password'].dirty && logindata.controls['password'].errors}"
+          placeholder="Ingresar contraseña"
+          maxlength="10"
+          required
+          aria-describedby="inputSuccess2Status"
+        />
+        <span class="glyphicon form-control-feedback" style="pointer-events: auto;padding-top: 7px;">
+          <mat-icon svgIcon="eye-off" id="togglePassword" *ngIf="!showPassword" (click)="showPassword = !showPassword"></mat-icon>
+          <mat-icon svgIcon="eye-on" id="togglePassword"  *ngIf="showPassword" (click)="showPassword = !showPassword"></mat-icon>
+        </span>
+        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+        <small
+          *ngIf="logindata.controls['password'].dirty && logindata.controls['password'].errors"
+          class="form-text form-text-error Campo-obligatorio">
+            Campo obligatorio
+        </small>
+      </div>
+      <div>
+        <p class="description-password">
+          <a (click)="modalcarga(content)">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </p>
+      </div>
+      <br/>
+      <div>
+        <label class="label">*Campos obligatorios</label>
+      </div>
+
+        <div class="form-group d-grid gap-2 d-md-flex justify-content-md-end" style="width: 100%; display: flex; flex-direction: row; justify-content: flex-end;align-content: flex-end; margin-top: 68px;">
+         <!-- <button type="button" class="btn btn-danger btn-cancelar-login" (click)="cancelarlogin()">
+            <p class="cancelar-login">Cancelar</p>
+          </button>-->
+          <button type="submit" class="btn btn-primary pull-right btuser" (click)="loginusuario()" [disabled]="logindata.valid == false">
+            Acceder
+          </button>
+        </div>
+    </form>
+  </section>
+</div>
+</section>
+</div>
+

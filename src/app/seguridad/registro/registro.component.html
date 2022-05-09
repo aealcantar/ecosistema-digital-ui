@@ -1,0 +1,131 @@
+  <!--<div style="position: absolute; width: 100%">
+ <ngb-alert
+    [type]="alert.type"
+    [dismissible]="true"
+    *ngIf="!staticAlertClosed"
+    (closed)="staticAlertClosed = true"
+    style="margin: 0 auto; width: 400px"
+  >
+    <div [innerHTML]="alert.message"></div>
+  </ngb-alert>
+</div>-->
+
+<app-alerta [objAlerta]="alert"></app-alerta>
+
+<div class="container-fluid logn">
+  <div class="bg" style="width: 100%;">
+      <p class="t-social">Trabajo Social</p>
+  </div>
+  <section class="">
+  <div class="cuadro-imagen">
+    <div class="img-bg">
+      <div class="group-815">
+        <div class="frame-3888">
+          <p class="mdulo-de">Módulo de</p>
+          <p class="trabajo-social">Trabajo social</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cuadro-blanco" style="display: inline;">
+    <section fxLayoutAlign="center">
+      <form
+        novalidate
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        autocomplete="off"
+        fxLayoutGap="10px"
+        [formGroup]="logindata"
+        style="width: 100%; padding-right: 43px; padding-left: 43px;"
+      >
+        <div class="title">
+          Nueva contraseña
+        </div>
+        <div class="description">
+            Ingresa una contraseña alfanumérica,<br/>
+            de 7 a 9 caracteres.
+        </div>
+
+        <br/>
+        <div class="form-group has-feedback" style="width: 100%;">
+          <label for="nvacontrasenia" class="Usuario">Ingrese la nueva contraseña
+            <span class="form-text"
+            [ngClass]="{'form-text-error': logindata.controls['nvacontrasenia'].dirty && logindata.controls['nvacontrasenia'].errors}">*
+          </span>:
+          </label>
+          <input
+            [type]="showPassword1?'text':'password'"
+            formControlName="nvacontrasenia"
+            id="nvacontrasenia"
+            class="form-control"
+            [ngClass]="{'form-control-error': logindata.controls['nvacontrasenia'].dirty && logindata.controls['nvacontrasenia'].errors}"
+            placeholder="Ingresar nueva contraseña"
+            minlength="7"
+            maxlength="9"
+
+            required
+          />
+          <span class="glyphicon form-control-feedback" style="pointer-events: auto;padding-top: 7px;">
+            <mat-icon svgIcon="eye-off" id="togglePassword1" *ngIf="!showPassword1" (click)="showPassword1 = !showPassword1"></mat-icon>
+            <mat-icon svgIcon="eye-on" id="togglePassword1"  *ngIf="showPassword1" (click)="showPassword1 = !showPassword1"></mat-icon>
+          </span>
+          <small
+            *ngIf="logindata.controls['nvacontrasenia'].dirty && logindata.controls['nvacontrasenia'].errors"
+            class="form-text form-text-error Contrasea-invlida">
+            {{logindata.controls['nvacontrasenia'].errors?.['required']? "Campo obligatorio" : "Contraseña inválida"}}
+          </small>
+        </div>
+
+        <div class="form-group has-feedback" style="width: 100%;">
+          <label for="confirmacontrasenia" class="Usuario">Confirmar nueva contraseña
+            <span class="form-text"
+            [ngClass]="{'form-text-error': logindata.controls['confirmacontrasenia'].dirty && logindata.controls['confirmacontrasenia'].errors}">*
+          </span>:
+          </label>
+          <input
+            [type]="showPassword2?'text':'password'"
+            formControlName="confirmacontrasenia"
+            id="confirmacontrasenia"
+            class="form-control"
+            [ngClass]="{'form-control-error': logindata.controls['confirmacontrasenia'].dirty && logindata.controls['confirmacontrasenia'].errors}"
+            placeholder="Confirmar nueva contraseña"
+            minlength="7"
+            maxlength="9"
+            required
+          />
+          <span class="glyphicon form-control-feedback" style="pointer-events: auto;padding-top: 7px;">
+            <mat-icon svgIcon="eye-off" id="togglePassword2" *ngIf="!showPassword2" (click)="showPassword2 = !showPassword2"></mat-icon>
+            <mat-icon svgIcon="eye-on" id="togglePassword2"  *ngIf="showPassword2" (click)="showPassword2 = !showPassword2"></mat-icon>
+          </span>
+          <small
+            *ngIf="logindata.controls['confirmacontrasenia'].dirty && logindata.controls['confirmacontrasenia'].errors"
+            class="form-text form-text-error Contrasea-invlida">
+            {{logindata.controls['confirmacontrasenia'].errors?.['required']? "Campo obligatorio" : "Contraseña inválida"}}
+          </small>
+        </div>
+        <div style="width: 100%;">
+         <hr />
+        </div>
+
+        <div style="width: 100%;">
+          <label class="label">*Campos obligatorios</label>
+        </div>
+        <div class="form-group d-grid gap-2 d-md-flex justify-content-md-end" style="width: 100%; text-align: right;">
+
+          <button
+            type="submit"
+            class="btn btn-primary pull-right btuser"
+            (click)="loginusuario()"
+            [disabled]="logindata.valid == false"
+          >
+            Aceptar
+          </button>
+          <button class="btn btn-danger pull-right btuser" type="button" (click)="cancelarlogin()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</section>
+</div>

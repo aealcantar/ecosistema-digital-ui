@@ -1,0 +1,14 @@
+.x-ciera{
+  opacity: 1;
+  width: 25px;
+  height: 25px;
+  flex-grow: 0;
+}
+
+.x-ciera > span.error{
+  color: #d0021b;
+}
+
+.x-ciera > span.success{
+  color: #1c7c3d;
+}

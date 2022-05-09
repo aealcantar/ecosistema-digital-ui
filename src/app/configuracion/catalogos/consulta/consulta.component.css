@@ -1,0 +1,165 @@
+.base-cont {
+  height: 346px;
+  /* padding-left: 23px;
+  padding-right: 23px;   */
+  border-radius: 6px;
+  box-shadow: 4px 4px 15px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.tit-princ {
+  flex-grow: 0;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #222;
+  padding-top: 20px;
+  padding-left: 23px;
+  padding-bottom: 19.5px;
+  border-bottom: 1px solid #eee;
+}
+
+.body-princ {
+  padding-top: 9.5px;
+  padding-left: 23px;
+  padding-bottom: 20px;
+  padding-right: 23px;
+}
+
+.texto-ind {
+  height: 17px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #222;
+}
+
+caption.borde-cap>div>span.totcargas {
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #222;
+
+}
+
+.txtcarga-archivo {
+  color: #9D2449;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fail {
+  color: red;
+}
+
+.header-modal-det {
+  border-bottom: none;
+}
+
+.footer-modal-det {
+  justify-content: space-between;
+  border-top: none;
+
+}
+
+.color-progres {
+  background-color: #B38E5D;
+}
+
+.barra-progress {
+  border: 3px solid #DDDDDD;
+  background-color: transparent;
+}
+
+.link-texto {
+  color: #4D92DF !important;
+  cursor: pointer;
+}
+
+.table-catalogo {
+  margin-top: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.table>:not(:first-child) {
+  border-top: 0 solid #dee2e6;
+  border-bottom: 0 solid #dee2e6;
+}
+
+table.table-catalogo>thead tr th {
+  height: 31px;
+  flex-grow: 0;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #222;
+  background-color: #f8f8f8;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.borde-cap {
+  border-top: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  padding-left: 1rem;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #666;
+  height: 41px;
+}
+
+table.table-catalogo>tbody tr td {
+  height: 20px;
+  flex-grow: 0;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #222;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+}
+
+.error {
+  color: #FF0303;
+}
+
+.pendiente {
+  color: #FA7F00;
+}
+
+.correcto {
+  color: #51DC00;
+}
