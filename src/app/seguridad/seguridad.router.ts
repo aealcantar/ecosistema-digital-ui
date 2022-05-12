@@ -13,7 +13,6 @@ export class SeguridadRouter implements CanActivate{
    if(this.authService.onSession()){
     return true;
    }else{
-  
     this.router.navigate(['/login']);
     return false;
    }

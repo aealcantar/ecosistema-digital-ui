@@ -130,8 +130,12 @@ export class LoginComponent implements OnInit {
                       //  this.usuario.strNombres + " " + this.usuario.strApellidoP
                       // );
                       console.log(result);
-
-                      this.authService.guardarUsuario(result.access_token);
+                      this.authService.getUserData(this.usuario.strEmail).subscribe(
+                        (response: any) => {
+                          this.authService.guardarUsuarioEnSesion(response);
+                        }
+                      )
+                      // this.authService.guardarUsuario(result.access_token);
                       this.authService.guardarToken(result.access_token);
                       this.seguridadService.registrarUsuario(this.usuario);
 

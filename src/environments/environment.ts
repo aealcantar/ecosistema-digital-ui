@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlServOauth: 'http://localhost:8080',
+  urlServOauth: 'http://localhost:8081',
   urlSiteGoogleRecaptcha: 'https://www.google.com/recaptcha/api/siteverify',
 
   siteKey: '6LcjT7wfAAAAAJtcZyGa0K44UBogPnXoeCd2RAuC',

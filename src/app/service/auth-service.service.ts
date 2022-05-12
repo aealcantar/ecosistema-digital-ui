@@ -57,6 +57,10 @@ export class AuthService {
     return this.http.get<Aplicacion>(`${environment.urlServOauth}/api/aplicacion/app?appName=${name}`);
   }
 
+  getUserData(aliasUsuario?:string){
+    return this.http.get<Usuario>(`${environment.urlServOauth}/api/aplicacion/getUserSession?aliasUsuario=${aliasUsuario}`);
+  }
+
   validateRecaptcha(response: string) {
   
     const urlEndpoint = environment.urlSiteGoogleRecaptcha ;
@@ -113,7 +117,7 @@ export class AuthService {
     this._usuario.strEmail = payload.user_name;
     this._usuario.strRol = payload.authorities;
 
-    // sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
 
   guardarUsuarioManual(userName: string, authorities: string): void {
@@ -121,6 +125,19 @@ export class AuthService {
     this._usuario.strEmail = userName;
     this._usuario.strRol = authorities;
     this._usuario.rolUser = authorities;
+    this._usuario.cveUsuario = 1;
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+  }
+
+  guardarUsuarioEnSesion(usuario: any): void {
+    this._usuario = new Usuario();
+    this._usuario.strEmail = usuario.correo;
+    this._usuario.strRol = usuario.strRol;
+    this._usuario.strNombres = usuario.nombre;
+    this._usuario.strApellidoP = usuario.apellidoPaterno;
+    this._usuario.strApellidoM = usuario.apellidoMaterno;
+    this._usuario.strUserName = usuario.matricula;
+    // this._usuario.rolUser = authorities;
     this._usuario.cveUsuario = 1;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
@@ -147,9 +164,11 @@ export class AuthService {
     }
     return false;
   }
+
   onSession(){
     return this.usuario != undefined;
   }
+
   logout(): void {
     this._token = '';
     this._usuario = new Usuario;
